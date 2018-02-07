@@ -1,6 +1,7 @@
 package com.barry.elk.starter;
 
-import com.barry.elk.config.ESProperties;
+import javax.servlet.Filter;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -9,7 +10,8 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.filter.CharacterEncodingFilter;
-import javax.servlet.Filter;
+
+import com.barry.elk.config.ESProperties;
 
 /**
  * TaskApplication [spring boot] 主方法

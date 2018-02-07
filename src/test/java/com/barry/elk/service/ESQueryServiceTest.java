@@ -61,7 +61,7 @@ public class ESQueryServiceTest extends BaseTest{
     @Autowired
     private ESProperties esProperties;
 
-    private static final String ip = "172.16.119.128";
+    private static final String ip = "10.65.2.119";
     private static final Integer port = 9200;
     private static String index = "driver_service";
     private static String driverType = "vehicle_condition";

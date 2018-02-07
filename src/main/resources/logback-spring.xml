@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false">
     <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
-    <property name="LOG_HOME" value="/Users/hantongshan/workspace-directory/logs" />
+    <property name="LOG_HOME" value="D:/logs" />
     <!-- 控制台输出 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -14,7 +14,7 @@
         <file>${LOG_HOME}/elk.log</file>
         <append>true</append>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${LOG_HOME}/elk.%d{yyyy-MM-dd}-%i.log.zip</FileNamePattern>
+            <FileNamePattern>${LOG_HOME}/elk.%d{yyyy-MM-dd}-%i.log</FileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -35,7 +35,7 @@
     <!--</appender>-->
 
     <appender name="LOGSTASH" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <destination>192.168.1.50:5000</destination>
+        <destination>10.65.2.119:4560</destination>
         <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder" />
     </appender>
 
@@ -47,8 +47,9 @@
     <!-- 日志输出级别 -->
     <root level="INFO">
         <appender-ref ref="STDOUT" />
-        <appender-ref ref="LOGSTASH" />
         <appender-ref ref="FILE" />
     </root>
-
+    <logger name="com.barry.elk" level="WARN" addtivity="false">
+         <appender-ref ref="LOGSTASH" />
+    </logger>
 </configuration>
