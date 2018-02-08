@@ -18,9 +18,11 @@ public class BaseTest {
 
 	private static final Logger logger = LoggerFactory.getLogger(BaseTest.class);
 	
-    @Ignore
     @Test
     public void baseTest(){
+    	for(int i = 0;i<100;i++){
+    		 logger.info(i+" ====> This is an error log with stack trace");
+    	}
     }
     
     @Test

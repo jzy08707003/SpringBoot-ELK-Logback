@@ -17,6 +17,14 @@ public class DriverServiceController {
 
     private static final Logger logger = LoggerFactory.getLogger(DriverServiceController.class);
 
+    @RequestMapping(value="/test", method = RequestMethod.GET)
+    public ResponseMessage test() {
+        logger.warn("WARN-springboot elk-logstash测试信息");
+        logger.error("ERROR-springboot elk-logstash测试信息");
+        logger.info("receiveCustomInfo接收到的参数为: test ");
+        return new ResponseMessage("1", "接收成功!");
+    }
+    
     @RequestMapping(value="/receiveCustomInfo", method = RequestMethod.POST)
     public ResponseMessage receiveCustomInfo(@RequestBody CustomInfo customInfo) {
         logger.warn("WARN-springboot elk-logstash测试信息:receiveCustomInfo");

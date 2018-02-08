@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false">
     <!--定义日志文件的存储地址 勿在 LogBack 的配置中使用相对路径-->
-    <property name="LOG_HOME" value="D:/logs" />
+    <property name="LOG_HOME" value="logs" />
     <!-- 控制台输出 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -14,7 +14,7 @@
         <file>${LOG_HOME}/elk.log</file>
         <append>true</append>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <FileNamePattern>${LOG_HOME}/elk.%d{yyyy-MM-dd}-%i.log</FileNamePattern>
+            <FileNamePattern>${LOG_HOME}/elk-%d{yyyy-MM-dd}-%i.log</FileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
                 <maxFileSize>100MB</maxFileSize>
             </timeBasedFileNamingAndTriggeringPolicy>
@@ -43,13 +43,15 @@
     <!--<logger name="com.iris.mapper" level="debug" additivity="false">-->
         <!--<appender-ref ref="STDOUT" />-->
     <!--</logger>-->
-
+<!--     <logger name="com.barry.elk" level="WARN" addtivity="false">
+         <appender-ref ref="LOGSTASH" />
+    </logger> -->
     <!-- 日志输出级别 -->
-    <root level="INFO">
+    <logger name="com.barry.elk" level="WARN" addtivity="false">
+			<appender-ref ref="LOGSTASH" />
+	</logger>
+    <logger name="com.barry.elk" level="INFO" addtivity="false">
         <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
-    </root>
-    <logger name="com.barry.elk" level="WARN" addtivity="false">
-         <appender-ref ref="LOGSTASH" />
     </logger>
 </configuration>
