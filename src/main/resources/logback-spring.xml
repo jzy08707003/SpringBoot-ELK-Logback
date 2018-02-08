@@ -50,8 +50,11 @@
     <logger name="com.barry.elk" level="WARN" addtivity="false">
 			<appender-ref ref="LOGSTASH" />
 	</logger>
-    <logger name="com.barry.elk" level="INFO" addtivity="false">
+    <logger name="org" level="INFO" addtivity="false">
         <appender-ref ref="STDOUT" />
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="com.barry.elk" level="INFO" addtivity="false">
         <appender-ref ref="FILE" />
     </logger>
 </configuration>
