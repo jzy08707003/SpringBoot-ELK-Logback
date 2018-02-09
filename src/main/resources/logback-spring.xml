@@ -55,6 +55,7 @@
         <appender-ref ref="FILE" />
     </logger>
     <logger name="com.barry.elk" level="INFO" addtivity="false">
+        <appender-ref ref="STDOUT" />
         <appender-ref ref="FILE" />
     </logger>
 </configuration>
